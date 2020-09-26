@@ -16,7 +16,7 @@ function HomeScreen({ navigation }) {
 		<Container>
 			<Content>
 				<Text>Home Screen - Native Base...</Text>
-				<Button onPress={() => navigation.navigate("Details")}>
+				<Button primary onPress={() => navigation.navigate("Details")}>
 					<Text>Click Me!</Text>
 				</Button>
 			</Content>
