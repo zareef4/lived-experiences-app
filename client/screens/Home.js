@@ -1,17 +1,26 @@
-import * as React from "react";
-import { View, Text, Button } from "react-native";
+import React, { useEffect } from "react";
+import Font, { useFonts } from "expo-font";
+import { Container, Content, Text, Button } from "native-base";
 
 function HomeScreen({ navigation }) {
+	const [loaded] = useFonts({
+		Roboto: require("native-base/Fonts/Roboto.ttf"),
+		Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+	});
+
+	if (!loaded) {
+		return null;
+	}
+
 	return (
-		<View
-			style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-		>
-			<Text>Home Screen</Text>
-			<Button
-				title="Go to Details"
-				onPress={() => navigation.navigate("Details")}
-			/>
-		</View>
+		<Container>
+			<Content>
+				<Text>Home Screen - Native Base...</Text>
+				<Button onPress={() => navigation.navigate("Details")}>
+					<Text>Click Me!</Text>
+				</Button>
+			</Content>
+		</Container>
 	);
 }
 

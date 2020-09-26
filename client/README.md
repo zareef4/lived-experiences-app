@@ -1,3 +1,9 @@
+## Setup
+
+Before running the app, in the project directory, you need to run
+
+### `npm install`
+
 ## Available Scripts
 
 In the project directory, you can run:
