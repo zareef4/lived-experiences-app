@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, Switch } from "react-native";
-import {Container, Header, CheckBox, Content, Form, Item, Input, Icon, Label, Textarea} from 'native-base';
+import { StyleSheet, Switch, Text } from "react-native";
+import {Button, Container, Header, Content, Form, Item, Input, Icon, Label, Textarea} from 'native-base';
 
 export default function AddNew() {
   const [title, setTitle] = React.useState("");
@@ -47,6 +47,9 @@ export default function AddNew() {
             <Input value={location} onChangeText={t => setLocation(t)}/>
           </Item>
           <Textarea value={story} onChangeText={setStory} rowSpan={5} bordered placeholder="Your Story..."/>
+          <Button full>
+            <Text style={{color: "white"}} onPress={onSubmit}>Post</Text>
+          </Button>
         </Form>
       </Content>
     </Container>
