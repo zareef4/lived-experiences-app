@@ -6,8 +6,11 @@ module.exports = gql`
 		author: String
 		story: String
 		image: String
-		isGoodExperience: Boolean
+		positiveExperience: Boolean
 		location: String
+		lat: String
+		long: String
+		anon: Boolean
 		_id: String
 	}
 
@@ -16,8 +19,11 @@ module.exports = gql`
 		author: String
 		story: String
 		image: String
-		isGoodExperience: Boolean
+		positiveExperience: Boolean
 		location: String
+		lat: String
+		long: String
+		anon: Boolean
 	}
 
 	type Query {

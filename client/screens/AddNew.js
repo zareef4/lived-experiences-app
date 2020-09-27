@@ -42,16 +42,39 @@ export default function AddNew({ navigation }) {
 	const [createPost, { data }] = useMutation(CREATE_POST);
 
 	function onSubmit() {
+		let lat, long;
+
+		switch (location) {
+			case "Vancouver":
+				lat = "49.281914";
+				long = "-123.121234";
+				break;
+			case "Chinatown":
+				lat = "49.280688";
+				long = "-123.108517";
+				break;
+			case "Main Street":
+				lat = "49.245767";
+				long = "-123.101282";
+				break;
+			default:
+				lat = "49.245767";
+				long = "-123.101282";
+		}
+
 		createPost({
 			variables: {
 				post: {
 					title,
 					author,
 					location,
-					story
+					story,
+					anon: isAnon,
+					lat,
+					long
 				}
 			}
-		});
+		}).catch(err => console.log(JSON.stringify(err)));
 
 		setTitle("");
 		setAuthor("");

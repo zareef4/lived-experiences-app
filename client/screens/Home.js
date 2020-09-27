@@ -27,6 +27,7 @@ const POSTS = gql`
 			location
 			image
 			_id
+			anon
 		}
 	}
 `;
@@ -68,7 +69,8 @@ function HomeScreen({ navigation }) {
 								story,
 								image,
 								location,
-								_id
+								_id,
+								anon
 							}) => {
 								return (
 									<Card key={_id}>
@@ -102,7 +104,9 @@ function HomeScreen({ navigation }) {
 											<Text>
 												By:{" "}
 												<Text style={styles.iosBrown}>
-													{author}
+													{anon
+														? "Anonymous"
+														: author}
 												</Text>
 											</Text>
 										</CardItem>

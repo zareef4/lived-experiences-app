@@ -1,66 +1,64 @@
 import React from "react";
 import MapView, { Marker } from "react-native-maps";
 import { StyleSheet, View, Dimensions } from "react-native";
-import { Container, Icon } from "native-base";
+import { Container, Icon, Text } from "native-base";
+import { useQuery, gql, NetworkStatus } from "@apollo/client";
+
 import MarkerModel from "../model/MarkerModel";
 import HeaderBar from "../components/HeaderBar";
 
-export default function MapScreen({ navigation }) {
-	function getMarkers() {
-		// TODO replace with call to db
-		return [
-			new MarkerModel(
-				"1",
-				{ latitude: 49.263931, longitude: -123.166615 },
-				"Great place",
-				"",
-				true
-			),
-			new MarkerModel(
-				"2",
-				{ latitude: 49.283024, longitude: -123.098492 },
-				"Bad place",
-				"",
-				false
-			),
-			new MarkerModel(
-				"3",
-				{ latitude: 49.279068, longitude: -123.128978 },
-				"I was harassed here",
-				"",
-				false
-			),
-			new MarkerModel(
-				"4",
-				{ latitude: 49.242378, longitude: -123.180193 },
-				"Safe for all",
-				"",
-				true
-			),
-			new MarkerModel(
-				"5",
-				{ latitude: 49.254405, longitude: -123.060154 },
-				"",
-				"",
-				true
-			)
-		];
+const POSTS = gql`
+	query {
+		posts {
+			title
+			location
+			_id
+			lat
+			long
+			positiveExperience
+		}
 	}
+`;
+
+export default function MapScreen({ navigation }) {
+	const { loading, error, data, refetch, networkStatus } = useQuery(POSTS, {
+		notifyOnNetworkStatusChange: true
+	});
+
+	if (networkStatus === NetworkStatus.refetch)
+		return <Text>Refetching...</Text>;
+	if (loading) return <Text>Loading...</Text>;
+	if (error) return <Text>Error :(</Text>;
 
 	return (
 		<Container>
 			<HeaderBar />
 			<Container>
 				<MapView style={styles.mapStyle}>
-					{getMarkers().map(marker => (
-						<Marker
-							key={marker.id}
-							coordinate={marker.latlon}
-							pinColor={marker.isGoodEvent ? "orange" : "red"}
-							title={marker.title}
-							description={marker.description}
-						/>
-					))}
+					{data.posts &&
+						data.posts.map(post => {
+							let marker = new MarkerModel(
+								post._id,
+								{
+									latitude: parseFloat(post.lat),
+									longitude: parseFloat(post.long)
+								},
+								post.title,
+								"",
+								post.positiveExperience
+							);
+							return (
+								<Marker
+									key={marker.id}
+									coordinate={marker.latlon}
+									pinColor={
+										marker.isGoodEvent ? "orange" : "red"
+									}
+									title={marker.title}
+									description={marker.description}
+								/>
+							);
+						})}
 				</MapView>
 				<Icon
 					style={{
