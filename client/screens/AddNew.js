@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Switch, Image } from "react-native";
 import {
 	Button,
@@ -34,11 +34,11 @@ const CREATE_POST = gql`
 `;
 
 export default function AddNew({ navigation }) {
-	const [title, setTitle] = React.useState("");
-	const [author, setAuthor] = React.useState("");
-	const [location, setLocation] = React.useState("");
-	const [story, setStory] = React.useState("");
-	const [isAnon, setIsAnon] = React.useState(true);
+	const [title, setTitle] = useState("");
+	const [author, setAuthor] = useState("");
+	const [location, setLocation] = useState("");
+	const [story, setStory] = useState("");
+	const [isAnon, setIsAnon] = useState(true);
 	const [createPost, { data }] = useMutation(CREATE_POST);
 
 	function onSubmit() {
