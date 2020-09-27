@@ -28,7 +28,7 @@ const CREATE_POST = gql`
 	}
 `;
 
-export default function AddNew(props) {
+export default function AddNew({ navigation }) {
 	const [title, setTitle] = React.useState("");
 	const [author, setAuthor] = React.useState("");
 	const [location, setLocation] = React.useState("");
@@ -39,7 +39,7 @@ export default function AddNew(props) {
 	function checkAnon() {
 		setDisableName(prev => !prev);
 	}
-	console.log(props);
+
 	function onSubmit() {
 		console.log({
 			title,
