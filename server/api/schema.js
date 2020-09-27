@@ -11,6 +11,7 @@ module.exports = gql`
 		author: String
 		story: String
 		image: String
+		isGoodExperience: Boolean
 		location: String
 		_id: String
 	}

@@ -10,7 +10,8 @@ import {
 	Input,
 	Icon,
 	Label,
-	Textarea
+	Textarea,
+	View
 } from "native-base";
 
 export default function AddNew() {
@@ -33,49 +34,73 @@ export default function AddNew() {
 			<Header />
 			<Content>
 				<Form style={styles.form}>
+					<View style={{ justifyContent: 'flex-end', flexDirection: "row", marginRight: 15 }}>
+						<Button transparent>
+							<Text style={styles.iosBrown} onPress={onSubmit}>
+								Post
+							</Text>
+						</Button>
+					</View>
 					<Item>
-						<Label>Title</Label>
-						<Input value={title} onChangeText={setTitle} />
+						<Input value={title} onChangeText={setTitle} placeholder="Add a Title" style={{ fontSize: 32, fontWeight: "600" }} />
 					</Item>
-					<Item floatingLabel disabled={disableName}>
-						<Icon name="account-circle" type="MaterialIcons" />
-						<Label>Name</Label>
-						<Input
+
+					{/* UPLOAD IMAGE INPUT HERE */}
+					<Textarea
+						
+						rowSpan={6}
+						style={{ margin: 15, fontSize: 16, backgroundColor: "rgb(51,50,50)" }}
+						placeholder="PLACEHOLDER FOR IMAGE UPLOADER"
+					/>
+
+					<Item disabled={disableName}>
+						{/* Name */}
+						<Input 
+							placeholder= "Enter your name"
 							disabled={disableName}
 							value={name}
 							onChangeText={t => setName(t)}
 						/>
 					</Item>
+
+					{/* Post anonymously */}
 					<Item>
-						<Label>Post Anonymously</Label>
+						<Label style={{ color: "white", fontSize: 16 }}>Post Anonymously</Label>
 						<Switch
-							trackColor={{ false: "#767577", true: "#81b0ff" }}
-							thumbColor={disableName ? "#f5dd4b" : "#f4f3f4"}
+							trackColor={{ false: "#81b0ffrg", true: "#81b0ffrgb(230,179,0)" }}
 							ios_backgroundColor="#3e3e3e"
 							onValueChange={checkAnon}
 							value={disableName}
 						/>
 					</Item>
-					<Item floatingLabel last>
-						<Icon name="location-on" type="MaterialIcons" />
-						<Label>Location</Label>
+
+					{/* Location */}
+					<Item floatingLabel>
+						<Icon
+							name="pin"
+							style={{ color: "rgb(74,74,74)" }}
+						></Icon>
+
 						<Input
 							value={location}
+							placeholder="Add Locaton"
 							onChangeText={t => setLocation(t)}
 						/>
 					</Item>
+
+					{/* TODO isGoodExperience?? */}
+
+
+
+					{/* Story */}
 					<Textarea
 						value={story}
 						onChangeText={setStory}
-						rowSpan={5}
-						bordered
-						placeholder="Your Story..."
+						rowSpan={8}
+						style={{ margin: 15, fontSize: 16, backgroundColor: "rgb(51,50,50)" }}
+						placeholder="Write your story..."
 					/>
-					<Button full>
-						<Text style={{ color: "white" }} onPress={onSubmit}>
-							Post
-						</Text>
-					</Button>
+					{/* Add characer limit if possible, not important for MVP */}
 				</Form>
 			</Content>
 		</Container>
@@ -83,5 +108,10 @@ export default function AddNew() {
 }
 
 const styles = StyleSheet.create({
-	form: {}
+	form: {},
+	iosBrown: {
+		color: "rgba(230,179,0,1)",
+		fontWeight: "700",
+		fontSize: 18
+	}
 });
