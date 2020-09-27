@@ -1,8 +1,8 @@
 import * as React from "react";
-import { View, Text, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StyleProvider } from "native-base";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 import getTheme from "./theme/components";
 import variables from "./theme/variables/platform";
@@ -40,13 +40,20 @@ function RootStackScreen() {
 	);
 }
 
+const client = new ApolloClient({
+	uri: "http://192.168.86.22:4000/",
+	cache: new InMemoryCache()
+});
+
 function App() {
 	return (
-		<StyleProvider style={getTheme(variables)}>
-			<NavigationContainer>
-				<RootStackScreen />
-			</NavigationContainer>
-		</StyleProvider>
+		<ApolloProvider client={client}>
+			<StyleProvider style={getTheme(variables)}>
+				<NavigationContainer>
+					<RootStackScreen />
+				</NavigationContainer>
+			</StyleProvider>
+		</ApolloProvider>
 	);
 }
 

@@ -12,6 +12,7 @@ module.exports = gql`
 		story: String
 		image: String
 		location: String
+		_id: String
 	}
 
 	type Query {
