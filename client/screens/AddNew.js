@@ -19,6 +19,7 @@ import {
 	Body
 } from "native-base";
 import { gql, useMutation } from "@apollo/client";
+import { set } from "react-native-reanimated";
 
 const CREATE_POST = gql`
 	mutation AddPost($post: PostInput!) {
@@ -40,6 +41,8 @@ export default function AddNew({ navigation }) {
 	const [story, setStory] = React.useState("");
 	const [isAnon, setIsAnon] = React.useState(true);
 	const [createPost, { data }] = useMutation(CREATE_POST);
+	const [isHappy, setHappy] = React.useState(false);
+	const [isSad, setSad] = React.useState(false);
 
 	function onSubmit() {
 		createPost({
@@ -62,6 +65,17 @@ export default function AddNew({ navigation }) {
 		navigation.goBack();
 	}
 
+	function makeHappy() {
+		setHappy(true);
+		setSad(false);
+	}
+
+	function makeSad() {
+		setSad(true);
+		setHappy(false)
+	}
+
+
 	return (
 		<Container>
 			<Header
@@ -71,8 +85,7 @@ export default function AddNew({ navigation }) {
 				}}
 			>
 				<Left>
-					<Button
-						transparent
+					<Button transparent
 						onPress={() => {
 							navigation.goBack();
 						}}
@@ -153,6 +166,31 @@ export default function AddNew({ navigation }) {
 					</Item>
 
 					{/* TODO isGoodExperience?? */}
+					<Item style={{ marginRight: 15, marginTop: 10 }}>
+						<Text>Was this a good or bad experience?</Text>
+
+						<Right style={{ marginRight: 10 }}>
+							<Button 
+							onPress = {makeHappy}
+							rounded
+							transparent ={!isHappy}
+							style={styles.reactionButton}>
+								<Image
+									source={require("../assets/happyFace.png")}
+								/>
+							</Button>
+						</Right>
+
+						<Button 
+						onPress = {makeSad}
+						rounded 
+						transparent ={!isSad}
+						style={styles.reactionButton}>
+							<Image
+								source={require("../assets/sadFace.png")}
+							/>
+						</Button>
+					</Item>
 
 					{/* Story */}
 					<Textarea
@@ -161,6 +199,7 @@ export default function AddNew({ navigation }) {
 						rowSpan={8}
 						style={{
 							margin: 15,
+							marginTop: 20,
 							fontSize: 16,
 							backgroundColor: "rgb(51,50,50)"
 						}}
@@ -178,5 +217,10 @@ const styles = StyleSheet.create({
 	iosBrown: {
 		color: "rgba(230,179,0,1)",
 		fontSize: 18
+	},
+	reactionButton: { 
+		width: 27, 
+		height: 27, 
+		justifyContent: "center" 
 	}
 });
