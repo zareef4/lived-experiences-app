@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
 import Font, { useFonts } from "expo-font";
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from "native-base";
+import { Container, Header, Content, Card, CardItem, Text, Button, Icon, Left, Body, Right, Fab } from "native-base";
 import { Image, StyleSheet } from "react-native";
 
 function HomeScreen({ navigation }) {
@@ -51,10 +51,21 @@ function HomeScreen({ navigation }) {
 							<Body>
 								{/* POST TITLE */}
 								<Text style={styles.postTitle}>POST TITLE</Text>
+
 								{/* POST AUTHOR */}
-								<Text note>
+								<Text>
 									By: <Text style={styles.iosBrown}>Sean Bowles</Text>
 								</Text>
+
+								{/* LOCATION */}
+								<Text note>
+									<Left>
+										<Text>
+											<Icon name="pin"></Icon> Vancouver
+										</Text>
+									</Left>
+								</Text>
+
 							</Body>
 						</CardItem>
 						<CardItem>
@@ -64,7 +75,7 @@ function HomeScreen({ navigation }) {
 								ribs short loin swine frankfurter burgdoggen turkey landjaeger.
 								Porchetta pork belly short ribs spare ribs...
 								 {/* NEED HELP IMPLEMENTING READ MORE BUTTON */}
-      					</Text>
+							</Text>
 						</CardItem>
 						<CardItem>
 							<Left>
@@ -88,7 +99,18 @@ function HomeScreen({ navigation }) {
 							</Right>
 						</CardItem>
 					</Card>
+
 				</Content>
+				{/* ADD NEW BUTTON */}
+				<Fab
+					onPress={() => navigation.navigate("New")}
+					containerStyle={{}}
+					style={{ backgroundColor: "rgba(230,179,0,1)" }}
+					position="bottomLeft"
+				>
+					<Icon name="add" />
+				</Fab>
+
 			</Container>
 		</Container>
 
