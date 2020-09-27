@@ -26,8 +26,19 @@ function SearchScreen({ navigation }) {
 	}
 
 	return (
-		<Container>
-			<Header>
+		<Container
+			style={{
+				marginTop: "50%",
+				borderTopLeftRadius: 10,
+				borderTopRightRadius: 10
+			}}
+		>
+			<Header
+				style={{
+					borderTopLeftRadius: 10,
+					borderTopRightRadius: 10
+				}}
+			>
 				<Left>
 					<Button
 						transparent
@@ -43,7 +54,11 @@ function SearchScreen({ navigation }) {
 			<Content>
 				<Form style={{ paddingRight: 20 }}>
 					<Text
-						style={{ marginLeft: 20, fontSize: 32, marginTop: 100 }}
+						style={{
+							marginLeft: 20,
+							fontSize: 32,
+							marginTop: 100
+						}}
 					>
 						Find Experiences
 					</Text>
