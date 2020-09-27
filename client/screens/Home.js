@@ -15,6 +15,7 @@ import {
 } from "native-base";
 import { Image, StyleSheet } from "react-native";
 import { useQuery, gql, NetworkStatus } from "@apollo/client";
+import { useFocusEffect } from "@react-navigation/native";
 
 import HeaderBar from "../components/HeaderBar";
 import PostCard from "../components/PostCard";
@@ -43,6 +44,14 @@ function HomeScreen({ navigation }) {
 		notifyOnNetworkStatusChange: true
 	});
 
+	useFocusEffect(
+		React.useCallback(() => {
+			console.log("maybe this?");
+			//refetchFn();
+			return undefined;
+		})
+	);
+
 	if (networkStatus === NetworkStatus.refetch)
 		return <Text>Refetching...</Text>;
 	if (loading) return <Text>Loading...</Text>;
@@ -70,7 +79,6 @@ function HomeScreen({ navigation }) {
 				{/* ADD NEW BUTTON a */}
 				<Fab
 					onPress={() => {
-						navigation.setOptions({ refetch });
 						navigation.navigate("AddNewModal");
 					}}
 					containerStyle={{}}
@@ -86,6 +94,23 @@ function HomeScreen({ navigation }) {
 						}}
 					/>
 				</Fab>
+				{/* <Fab
+					onPress={() => {
+						refetch();
+					}}
+					containerStyle={{}}
+					style={{ backgroundColor: "green" }}
+					position="bottomLeft"
+				>
+					<Icon
+						name="add"
+						style={{
+							color: "black",
+							fontSize: 44,
+							fontWeight: 1000
+						}}
+					/>
+				</Fab> */}
 			</Container>
 		</Container>
 	);

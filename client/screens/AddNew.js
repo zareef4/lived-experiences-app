@@ -34,7 +34,7 @@ const CREATE_POST = gql`
 	}
 `;
 
-export default function AddNew({ navigation }) {
+export default function AddNew({ navigation, route }) {
 	const [title, setTitle] = useState("");
 	const [author, setAuthor] = useState("");
 	const [location, setLocation] = useState("");
@@ -95,9 +95,8 @@ export default function AddNew({ navigation }) {
 
 	function makeSad() {
 		setSad(true);
-		setHappy(false)
+		setHappy(false);
 	}
-
 
 	return (
 		<Container>
@@ -108,7 +107,8 @@ export default function AddNew({ navigation }) {
 				}}
 			>
 				<Left>
-					<Button transparent
+					<Button
+						transparent
 						onPress={() => {
 							navigation.goBack();
 						}}
@@ -193,25 +193,25 @@ export default function AddNew({ navigation }) {
 						<Text>Was this a good or bad experience?</Text>
 
 						<Right style={{ marginRight: 10 }}>
-							<Button 
-							onPress = {makeHappy}
-							rounded
-							transparent ={!isHappy}
-							style={styles.reactionButton}>
+							<Button
+								onPress={makeHappy}
+								rounded
+								transparent={!isHappy}
+								style={styles.reactionButton}
+							>
 								<Image
 									source={require("../assets/happyFace.png")}
 								/>
 							</Button>
 						</Right>
 
-						<Button 
-						onPress = {makeSad}
-						rounded 
-						transparent ={!isSad}
-						style={styles.reactionButton}>
-							<Image
-								source={require("../assets/sadFace.png")}
-							/>
+						<Button
+							onPress={makeSad}
+							rounded
+							transparent={!isSad}
+							style={styles.reactionButton}
+						>
+							<Image source={require("../assets/sadFace.png")} />
 						</Button>
 					</Item>
 
@@ -241,9 +241,9 @@ const styles = StyleSheet.create({
 		color: "rgba(230,179,0,1)",
 		fontSize: 18
 	},
-	reactionButton: { 
-		width: 27, 
-		height: 27, 
-		justifyContent: "center" 
+	reactionButton: {
+		width: 27,
+		height: 27,
+		justifyContent: "center"
 	}
 });

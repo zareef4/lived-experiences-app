@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Image, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -25,9 +26,34 @@ function MainStackScreen() {
 				headerShown: false
 			}}
 			drawerPosition="right"
+			drawerStyle={{
+				backgroundColor: "#282828"
+			}}
 		>
-			<MainStack.Screen name="Home" component={HomeScreen} />
-			<MainStack.Screen name="Map" component={MapScreen} />
+			<MainStack.Screen
+				name="Home"
+				component={HomeScreen}
+				options={{
+					drawerIcon: ({ focused, size }) => {
+						return (
+							<Image source={require("./assets/feedIcon.png")} />
+						);
+					}
+				}}
+			/>
+			<MainStack.Screen
+				name="Map"
+				component={MapScreen}
+				options={{
+					drawerIcon: ({ focused, size }) => {
+						return (
+							<Image
+								source={require("./assets/mapMarkerMenu.png")}
+							/>
+						);
+					}
+				}}
+			/>
 		</MainStack.Navigator>
 	);
 }
@@ -53,7 +79,7 @@ function RootStackScreen() {
 }
 
 const client = new ApolloClient({
-	uri: "http://192.168.1.79:4000/",
+	uri: "http://192.168.86.22:4000/",
 	cache: new InMemoryCache()
 });
 
