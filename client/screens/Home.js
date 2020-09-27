@@ -113,7 +113,7 @@ function HomeScreen({ navigation }) {
 											<Icon
 												name="pin"
 												style={{ color: "white" }}
-											></Icon>{" "}
+											></Icon>
 											Vancouver
 										</Text>
 									</Left>
