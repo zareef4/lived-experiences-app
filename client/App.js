@@ -53,7 +53,7 @@ function RootStackScreen() {
 }
 
 const client = new ApolloClient({
-	uri: "http://192.168.86.22:4000/",
+	uri: "http://192.168.1.79:4000/",
 	cache: new InMemoryCache()
 });
 
