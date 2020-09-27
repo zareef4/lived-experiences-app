@@ -75,9 +75,16 @@ function HomeScreen({ navigation }) {
 					}}
 					containerStyle={{}}
 					style={{ backgroundColor: "rgba(230,179,0,1)" }}
-					position="bottomLeft"
+					position="bottomRight"
 				>
-					<Icon name="add" />
+					<Icon
+						name="add"
+						style={{
+							color: "black",
+							fontSize: 44,
+							fontWeight: 1000
+						}}
+					/>
 				</Fab>
 			</Container>
 		</Container>

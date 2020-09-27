@@ -39,7 +39,7 @@ export default function AddNew({ navigation }) {
 	const [author, setAuthor] = useState("");
 	const [location, setLocation] = useState("");
 	const [story, setStory] = useState("");
-	const [isAnon, setIsAnon] = useState(true);
+	const [isAnon, setIsAnon] = useState(false);
 	const [createPost, { data }] = useMutation(CREATE_POST);
 	const [isHappy, setHappy] = React.useState(false);
 	const [isSad, setSad] = React.useState(false);
