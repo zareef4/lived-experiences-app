@@ -140,13 +140,15 @@ export default function AddNew({ navigation, route }) {
 
 					{/* UPLOAD IMAGE INPUT HERE */}
 					<Textarea
+					disabled
 						rowSpan={6}
 						style={{
 							margin: 15,
 							fontSize: 16,
 							backgroundColor: "rgb(51,50,50)"
 						}}
-						placeholder="PLACEHOLDER FOR IMAGE UPLOADER"
+						placeholder="     PLACEHOLDER FOR IMAGE UPLOADER"
+						placeholderTextColor="red"
 					/>
 
 					<Item style={{ width: "50%", marginBottom: 10 }}>

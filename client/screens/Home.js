@@ -82,15 +82,16 @@ function HomeScreen({ navigation }) {
 						navigation.navigate("AddNewModal");
 					}}
 					containerStyle={{}}
-					style={{ backgroundColor: "rgba(230,179,0,1)" }}
+					style={{ backgroundColor: "rgba(230,179,0,1)", justifyContent:"center" }}
 					position="bottomRight"
 				>
 					<Icon
 						name="add"
 						style={{
 							color: "black",
-							fontSize: 44,
-							fontWeight: 1000
+							fontSize:40,
+							fontWeight: 1000,
+							marginTop:10
 						}}
 					/>
 				</Fab>
