@@ -14,7 +14,7 @@ import {
 	Fab
 } from "native-base";
 import { Image, StyleSheet } from "react-native";
-import HeaderBar from "./HeaderBar";
+import HeaderBar from "../HeaderBar";
 
 function HomeScreen({ navigation }) {
 	const [loaded] = useFonts({

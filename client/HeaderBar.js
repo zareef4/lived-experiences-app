@@ -1,9 +1,12 @@
 import {Button, Header, Icon, Left, Right} from "native-base";
 import {Image, StyleSheet} from "react-native";
 import React from "react";
+import { useNavigation } from '@react-navigation/native';
 
 
-export default function HeaderBar({navigation}) {
+export default function HeaderBar() {
+  const navigation = useNavigation();
+
   return (
     <Header>
       <Left>
@@ -12,7 +15,7 @@ export default function HeaderBar({navigation}) {
           transparent
         >
           <Image
-            source={require("../assets/logo.png")}
+            source={require("./assets/logo.png")}
             style={{ width: 40, height: 40 }}
           />
         </Button>
@@ -25,7 +28,7 @@ export default function HeaderBar({navigation}) {
             onPress={() => navigation.navigate("Search")}
             name="search"
             style={styles.reactIcons}
-          ></Icon>
+          />
         </Button>
         {/* FILTER */}
         <Button
@@ -35,14 +38,14 @@ export default function HeaderBar({navigation}) {
           <Icon
             name="md-options"
             style={styles.reactIcons}
-          ></Icon>
+          />
         </Button>
         {/* MENU */}
         <Button
           onPress={() => navigation.navigate("Menu")}
           transparent
         >
-          <Icon name="md-menu" style={styles.reactIcons}></Icon>
+          <Icon name="md-menu" style={styles.reactIcons}/>
         </Button>
       </Right>
     </Header>

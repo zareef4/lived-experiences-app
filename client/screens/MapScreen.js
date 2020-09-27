@@ -3,9 +3,9 @@ import MapView, {Marker} from 'react-native-maps';
 import {StyleSheet, View, Dimensions} from 'react-native';
 import {Icon} from 'native-base';
 import MarkerModel from '../model/MarkerModel'
-import HeaderBar from "./HeaderBar"
+import HeaderBar from "../HeaderBar"
 
-export default function Map({navigation}) {
+export default function MapScreen({navigation}) {
   function getMarkers() {
     // TODO replace with call to db
     return [
@@ -22,10 +22,6 @@ export default function Map({navigation}) {
     ];
   }
 
-  function handleAdd() {
-    navigation.navigate("AddNew");
-  }
-
   return (
       <View style={styles.container}>
         <MapView style={styles.mapStyle}>
@@ -39,11 +35,11 @@ export default function Map({navigation}) {
             />
           ))}
         </MapView>
-        <HeaderBar style={{position: "absolute", top: 50}}/>  {/*TODO this doesnt look right*/}
+        <HeaderBar style={{position: "absolute", top: 50}}/>
         <Icon style={{position: "absolute", bottom: 50, fontSize: 60, color: "orange"}}
               name="add-circle"
               type="MaterialIcons"
-              onPress={handleAdd}
+              onPress={() => navigation.navigate("AddNew")}
         />
       </View>
   );
