@@ -11,6 +11,10 @@ function PostCard({
 		Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
 	});
 
+	const [loved, setLoved] = useState(false);
+	const [liked, setLiked] = useState(false);
+	const [disliked, setDisliked] = useState(false);
+
 	return (
 		<Card>
 			{/* POST IMAGE */}
@@ -86,16 +90,56 @@ function PostCard({
 			<CardItem>
 				<Left>
 					{/* LOVE REACTION */}
-					<Button transparent>
-						<Image source={require("../assets/heart.png")} />
+
+					<Button
+						transparent
+						onPress={() => {
+							setLoved(true);
+							setLiked(false);
+							setDisliked(false);
+						}}
+					>
+						<Image
+							source={
+								loved
+									? require("../assets/heart.png")
+									: require("../assets/heartOutline.png")
+							}
+						/>
 					</Button>
 					{/* HAPPY REACTION */}
-					<Button transparent>
-						<Image source={require("../assets/thumbUp.png")} />
+					<Button
+						transparent
+						onPress={() => {
+							setLoved(false);
+							setLiked(true);
+							setDisliked(false);
+						}}
+					>
+						<Image
+							source={
+								liked
+									? require("../assets/thumbUp.png")
+									: require("../assets/thumbUpOutline.png")
+							}
+						/>
 					</Button>
 					{/* SAD REACTION*/}
-					<Button transparent>
-						<Image source={require("../assets/thumbDown.png")} />
+					<Button
+						transparent
+						onPress={() => {
+							setLoved(false);
+							setLiked(false);
+							setDisliked(true);
+						}}
+					>
+						<Image
+							source={
+								disliked
+									? require("../assets/thumbDown.png")
+									: require("../assets/thumbDownOutline.png")
+							}
+						/>
 					</Button>
 				</Left>
 				<Right>
