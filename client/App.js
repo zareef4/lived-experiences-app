@@ -8,7 +8,8 @@ import getTheme from "./theme/components";
 import variables from "./theme/variables/platform";
 
 import HomeScreen from "./screens/Home";
-import DetailsScreen from "./screens/Details";
+import SearchScreen from "./screens/Search";
+import FilterScreen from "./screens/Filter";
 import AddNewScreen from "./screens/AddNew";
 
 const MainStack = createStackNavigator();
@@ -36,6 +37,8 @@ function RootStackScreen() {
 		>
 			<RootStack.Screen name="Main" component={MainStackScreen} />
 			<RootStack.Screen name="AddNewModal" component={AddNewScreen} />
+			<RootStack.Screen name="SearchModal" component={SearchScreen} />
+			<RootStack.Screen name="FilterModal" component={FilterScreen} />
 		</RootStack.Navigator>
 	);
 }
