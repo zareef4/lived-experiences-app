@@ -41,13 +41,6 @@ export default function AddNew({ navigation }) {
 	}
 
 	function onSubmit() {
-		console.log({
-			title,
-			author,
-			location,
-			story,
-			disableName
-		});
 		createPost({
 			variables: {
 				post: {
@@ -58,6 +51,14 @@ export default function AddNew({ navigation }) {
 				}
 			}
 		});
+
+		setTitle("");
+		setAuthor("");
+		setLocation("");
+		setStory("");
+		setDisableName(false);
+
+		navigation.goBack();
 	}
 
 	return (

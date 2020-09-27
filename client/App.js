@@ -1,6 +1,8 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+
 import { StyleProvider } from "native-base";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
@@ -11,8 +13,9 @@ import HomeScreen from "./screens/Home";
 import SearchScreen from "./screens/Search";
 import FilterScreen from "./screens/Filter";
 import AddNewScreen from "./screens/AddNew";
+import MapScreen from "./screens/Map";
 
-const MainStack = createStackNavigator();
+const MainStack = createDrawerNavigator();
 const RootStack = createStackNavigator();
 
 function MainStackScreen() {
@@ -21,8 +24,10 @@ function MainStackScreen() {
 			screenOptions={{
 				headerShown: false
 			}}
+			drawerPosition="right"
 		>
 			<MainStack.Screen name="Home" component={HomeScreen} />
+			<MainStack.Screen name="Map" component={MapScreen} />
 		</MainStack.Navigator>
 	);
 }
