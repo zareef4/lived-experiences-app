@@ -9,26 +9,42 @@ import variables from "./theme/variables/platform";
 
 import HomeScreen from "./screens/Home";
 import DetailsScreen from "./screens/Details";
-import AddNew from "./screens/AddNew";
-import MapScreen from "./screens/MapScreen"
+import AddNewScreen from "./screens/AddNew";
 
-const Stack = createStackNavigator();
+const MainStack = createStackNavigator();
+const RootStack = createStackNavigator();
+
+function MainStackScreen() {
+	return (
+		<MainStack.Navigator
+			screenOptions={{
+				headerShown: false
+			}}
+		>
+			<MainStack.Screen name="Home" component={HomeScreen} />
+		</MainStack.Navigator>
+	);
+}
+
+function RootStackScreen() {
+	return (
+		<RootStack.Navigator
+			mode="modal"
+			screenOptions={{
+				headerShown: false
+			}}
+		>
+			<RootStack.Screen name="Main" component={MainStackScreen} />
+			<RootStack.Screen name="AddNewModal" component={AddNewScreen} />
+		</RootStack.Navigator>
+	);
+}
 
 function App() {
 	return (
 		<StyleProvider style={getTheme(variables)}>
 			<NavigationContainer>
-				<Stack.Navigator
-					initialRouteName="Home"
-					screenOptions={{
-						headerShown: false
-					}}
-				>
-					<Stack.Screen name="Home" component={HomeScreen} />
-					<Stack.Screen name="Details" component={DetailsScreen} />
-					<Stack.Screen name="AddNew" component={AddNew}/>
-					<Stack.Screen name="Map" component={MapScreen}/>
-				</Stack.Navigator>
+				<RootStackScreen />
 			</NavigationContainer>
 		</StyleProvider>
 	);

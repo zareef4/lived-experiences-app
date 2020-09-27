@@ -72,7 +72,7 @@ function HomeScreen({ navigation }) {
 											<Icon
 												name="pin"
 												style={{ color: "white" }}
-											></Icon>{" "}
+											></Icon>
 											Vancouver
 										</Text>
 									</Left>
@@ -126,7 +126,7 @@ function HomeScreen({ navigation }) {
 				</Content>
 				{/* ADD NEW BUTTON a */}
 				<Fab
-					onPress={() => navigation.navigate("New")}
+					onPress={() => navigation.navigate("AddNewModal")}
 					containerStyle={{}}
 					style={{ backgroundColor: "rgba(230,179,0,1)" }}
 					position="bottomLeft"
