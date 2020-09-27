@@ -19,23 +19,31 @@ export default function HeaderBar() {
 
 			<Right>
 				{/* SEARCH */}
-				<Button transparent>
-					<Icon
-						onPress={() => navigation.navigate("SearchModal")}
-						name="search"
-						style={styles.reactIcons}
-					/>
+				<Button
+					transparent
+					onPress={() => navigation.navigate("SearchModal")}
+					style={{
+						backgroundColor: "rgb(51, 50, 50)",
+						borderRadius: 5
+					}}
+				>
+					<Image source={require("../assets/searchIcon.png")} />
 				</Button>
 				{/* FILTER */}
 				<Button
 					onPress={() => navigation.navigate("FilterModal")}
 					transparent
+					style={{
+						backgroundColor: "rgb(51, 50, 50)",
+						borderRadius: 5,
+						marginLeft: 15
+					}}
 				>
-					<Icon name="md-options" style={styles.reactIcons} />
+					<Image source={require("../assets/filterIcon.png")} />
 				</Button>
 				{/* MENU */}
 				<Button onPress={() => navigation.openDrawer()} transparent>
-					<Icon name="md-menu" style={styles.reactIcons} />
+					<Image source={require("../assets/menuButton.png")} />
 				</Button>
 			</Right>
 		</Header>

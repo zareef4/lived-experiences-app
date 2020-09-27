@@ -42,7 +42,11 @@ function RootStackScreen() {
 		>
 			<RootStack.Screen name="Main" component={MainStackScreen} />
 			<RootStack.Screen name="AddNewModal" component={AddNewScreen} />
-			<RootStack.Screen name="SearchModal" component={SearchScreen} />
+			<RootStack.Screen
+				name="SearchModal"
+				component={SearchScreen}
+				options={{ cardStyle: { backgroundColor: "transparent" } }}
+			/>
 			<RootStack.Screen name="FilterModal" component={FilterScreen} />
 		</RootStack.Navigator>
 	);

@@ -88,41 +88,63 @@ function HomeScreen({ navigation }) {
 												}}
 											/>
 										</CardItem>
-										<CardItem>
-											<Body>
-												{/* POST TITLE */}
-												<Text style={styles.postTitle}>
-													{title}
-												</Text>
-
-												{/* POST AUTHOR */}
-												<Text>
-													By:{" "}
-													<Text
-														style={styles.iosBrown}
-													>
-														{author}
-													</Text>
-												</Text>
-
-												{/* LOCATION */}
-												<Text note>
-													<Left>
-														<Text>
-															<Icon
-																name="pin"
-																style={{
-																	color:
-																		"white"
-																}}
-															></Icon>{" "}
-															{location}
-														</Text>
-													</Left>
-												</Text>
-											</Body>
+										<CardItem cardBody>
+											{/* POST TITLE */}
+											<Text style={styles.postTitle}>
+												{title}
+											</Text>
 										</CardItem>
-										<CardItem>
+										<CardItem
+											cardBody
+											style={{ marginLeft: 20 }}
+										>
+											{/* POST AUTHOR */}
+											<Text>
+												By:{" "}
+												<Text style={styles.iosBrown}>
+													{author}
+												</Text>
+											</Text>
+										</CardItem>
+										{/* LOCATION */}
+										<CardItem
+											cardBody
+											style={{
+												marginLeft: 20,
+												marginRight: 20
+											}}
+										>
+											<Left>
+												<Image
+													source={require("../assets/mapMarker.png")}
+												/>
+												<Text
+													style={{
+														color:
+															"rgb(116,116,116)"
+													}}
+												>
+													{location}
+												</Text>
+											</Left>
+											<Right>
+												<Text
+													style={{
+														color:
+															"rgb(116,116,116)"
+													}}
+												>
+													4 hours ago
+												</Text>
+											</Right>
+										</CardItem>
+										<CardItem
+											cardBody
+											style={{
+												marginLeft: 20,
+												marginRight: 20
+											}}
+										>
 											{/* POST BODY */}
 											<Text>
 												{story}
@@ -133,40 +155,28 @@ function HomeScreen({ navigation }) {
 											<Left>
 												{/* LOVE REACTION */}
 												<Button transparent>
-													<Icon
-														name="md-heart"
-														style={
-															styles.reactIcons
-														}
-													></Icon>
+													<Image
+														source={require("../assets/heart.png")}
+													/>
 												</Button>
 												{/* HAPPY REACTION */}
 												<Button transparent>
-													<Icon
-														name="md-thumbs-up"
-														style={
-															styles.reactIcons
-														}
-													></Icon>
+													<Image
+														source={require("../assets/thumbUp.png")}
+													/>
 												</Button>
 												{/* SAD REACTION*/}
 												<Button transparent>
-													<Icon
-														name="md-thumbs-down"
-														style={
-															styles.reactIcons
-														}
-													></Icon>
+													<Image
+														source={require("../assets/thumbDown.png")}
+													/>
 												</Button>
 											</Left>
 											<Right>
 												<Button transparent>
-													<Icon
-														name="md-share"
-														style={
-															styles.reactIcons
-														}
-													></Icon>
+													<Image
+														source={require("../assets/share.png")}
+													/>
 												</Button>
 											</Right>
 										</CardItem>
@@ -200,7 +210,8 @@ const styles = StyleSheet.create({
 		fontWeight: "400"
 	},
 	postTitle: {
-		fontSize: 32
+		fontSize: 32,
+		marginLeft: 20
 	},
 	reactIcons: {
 		padding: 2,
