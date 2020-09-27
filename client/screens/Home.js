@@ -69,10 +69,14 @@ function HomeScreen({ navigation }) {
 				</Right>
 			</Header>
 
-			<Container>
+			<Container
+				style={{
+					paddingLeft: 8,
+					paddingRight: 8
+				}}
+			>
 				<Content>
 					<Card>
-						<CardItem></CardItem>
 						{/* POST IMAGE */}
 						<CardItem cardBody>
 							<Image
@@ -80,7 +84,13 @@ function HomeScreen({ navigation }) {
 									uri:
 										"https://www.rollingstone.com/wp-content/uploads/2018/06/inside-black-lives-matter-33f06033-8048-496e-b3c1-5290a6d9c5b8.jpg?w=1024"
 								}}
-								style={{ height: 200, width: null, flex: 1 }}
+								style={{
+									height: 200,
+									width: null,
+									flex: 1,
+									borderTopLeftRadius: 8,
+									borderTopRightRadius: 8
+								}}
 							/>
 						</CardItem>
 						<CardItem>
@@ -100,7 +110,11 @@ function HomeScreen({ navigation }) {
 								<Text note>
 									<Left>
 										<Text>
-											<Icon name="pin"></Icon> Vancouver
+											<Icon
+												name="pin"
+												style={{ color: "white" }}
+											></Icon>{" "}
+											Vancouver
 										</Text>
 									</Left>
 								</Text>
@@ -151,7 +165,7 @@ function HomeScreen({ navigation }) {
 						</CardItem>
 					</Card>
 				</Content>
-				{/* ADD NEW BUTTON */}
+				{/* ADD NEW BUTTON a */}
 				<Fab
 					onPress={() => navigation.navigate("New")}
 					containerStyle={{}}
@@ -178,7 +192,7 @@ const styles = StyleSheet.create({
 	},
 	reactIcons: {
 		padding: 2,
-		color: "black"
+		color: "white"
 	}
 });
 

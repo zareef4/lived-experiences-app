@@ -93,9 +93,9 @@ export default {
 	},
 
 	// Card
-	cardDefaultBg: "#fff",
-	cardBorderColor: "#ccc",
-	cardBorderRadius: 2,
+	cardDefaultBg: "#202020",
+	cardBorderColor: "#202020",
+	cardBorderRadius: 8,
 	cardItemPadding: platform === "ios" ? 10 : 12,
 
 	// CheckBox
@@ -111,7 +111,7 @@ export default {
 	checkboxTickColor: "#fff",
 
 	// Color
-	brandPrimary: platform === "ios" ? "#E6B300" : "#E6B300",
+	brandPrimary: "#E6B300",
 	brandInfo: "#62B1F6",
 	brandSuccess: "#5cb85c",
 	brandDanger: "#d9534f",
@@ -155,15 +155,15 @@ export default {
 
 	// Header
 	toolbarBtnColor: platform === "ios" ? "#007aff" : "#fff",
-	toolbarDefaultBg: platform === "ios" ? "#F8F8F8" : "#3F51B5",
+	toolbarDefaultBg: "#282828",
 	toolbarHeight: platform === "ios" ? 64 : 56,
 	toolbarSearchIconSize: platform === "ios" ? 20 : 23,
 	toolbarInputColor: platform === "ios" ? "#CECDD2" : "#fff",
 	searchBarHeight: platform === "ios" ? 30 : 40,
 	searchBarInputHeight: platform === "ios" ? 30 : 50,
 	toolbarBtnTextColor: platform === "ios" ? "#007aff" : "#fff",
-	toolbarDefaultBorder: platform === "ios" ? "#a7a6ab" : "#3F51B5",
-	iosStatusbar: platform === "ios" ? "dark-content" : "light-content",
+	toolbarDefaultBorder: "#282828",
+	iosStatusbar: "light-content",
 	get statusBarColor() {
 		return color(this.toolbarDefaultBg)
 			.darken(0.2)
@@ -246,8 +246,8 @@ export default {
 	tabFontSize: 15,
 
 	// Text
-	textColor: "#000",
-	inverseTextColor: "#fff",
+	textColor: "#FFF",
+	inverseTextColor: "#000",
 	noteFontSize: 14,
 	get defaultTextColor() {
 		return this.textColor;
