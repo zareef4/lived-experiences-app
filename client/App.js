@@ -9,6 +9,7 @@ import variables from "./theme/variables/platform";
 
 import HomeScreen from "./screens/Home";
 import DetailsScreen from "./screens/Details";
+import AddNew from "./screens/AddNew";
 
 const Stack = createStackNavigator();
 
