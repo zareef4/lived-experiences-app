@@ -10,7 +10,7 @@ import variables from "./theme/variables/platform";
 import HomeScreen from "./screens/Home";
 import DetailsScreen from "./screens/Details";
 import AddNewScreen from "./screens/AddNew";
-import MapScreen from "./screens/MapScreen"
+import {MapScreen} from "./screens/MapScreen"
 import {createDrawerNavigator} from "@react-navigation/drawer";
 import SearchScreen from "./screens/SearchScreen";
 

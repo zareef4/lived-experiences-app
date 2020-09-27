@@ -11,22 +11,30 @@ import {
 	Icon,
 	Label,
 	Textarea,
-	View
+	View,
+	Picker
 } from "native-base";
+import {handleNewPost} from "./MapScreen";
 
-export default function AddNew() {
+export default function AddNew({navigation}) {
 	const [title, setTitle] = React.useState("");
 	const [name, setName] = React.useState("");
 	const [location, setLocation] = React.useState("");
 	const [story, setStory] = React.useState("");
+	const [wasGoodExp, setWasGoodExp] = React.useState(false);
 	const [disableName, setDisableName] = React.useState(false);
 
 	function checkAnon() {
 		setDisableName(prev => !prev);
 	}
 
+	function checkWasGoodExp() {
+		setWasGoodExp(prev => !prev)
+	}
+
 	function onSubmit() {
-		// TODO
+		handleNewPost(title, name, location, story, wasGoodExp);
+		navigation.goBack();
 	}
 
 	return (
@@ -57,7 +65,7 @@ export default function AddNew() {
 						<Input 
 							placeholder= "Enter your name"
 							disabled={disableName}
-							value={name}
+							value={disableName ? "" : name}
 							onChangeText={t => setName(t)}
 						/>
 					</Item>
@@ -74,22 +82,34 @@ export default function AddNew() {
 					</Item>
 
 					{/* Location */}
-					<Item floatingLabel>
+					<Item picker>
 						<Icon
 							name="pin"
 							style={{ color: "rgb(74,74,74)" }}
 						/>
-
-						<Input
-							value={location}
-							placeholder="Add Location"
-							onChangeText={t => setLocation(t)}
-						/>
+						<Picker
+							mode="dropdown"
+							style={{color: "white", width: undefined}}
+							placeholder="Location"
+							selectedValue={location}
+							onValueChange={t => setLocation(t)}
+						>
+							<Picker.Item label="Vancouver" value="Vancouver"/>
+							<Picker.Item label="Chinatown" value="Chinatown"/>
+							<Picker.Item label="Main Street" value="Main Street"/>
+						</Picker>
 					</Item>
 
-					{/* TODO isGoodExperience?? */}
-
-
+					{/*Was a good experience?*/}
+					<Item>
+						<Label style={{ color: "white", fontSize: 16 }}>Was this a good experience?</Label>
+						<Switch
+							trackColor={{ false: "#81b0ffrg", true: "#81b0ffrgb(230,179,0)" }}
+							ios_backgroundColor="#3e3e3e"
+							onValueChange={checkWasGoodExp}
+							value={wasGoodExp}
+						/>
+					</Item>
 
 					{/* Story */}
 					<Textarea
@@ -99,7 +119,7 @@ export default function AddNew() {
 						style={{ margin: 15, fontSize: 16, backgroundColor: "rgb(51,50,50)" }}
 						placeholder="Write your story..."
 					/>
-					{/* Add characer limit if possible, not important for MVP */}
+					{/* Add character limit if possible, not important for MVP */}
 				</Form>
 			</Content>
 		</Container>
