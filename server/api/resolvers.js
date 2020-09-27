@@ -4,11 +4,24 @@ const resolvers = {
 			let posts = await _context.db
 				.collection("posts")
 				.find()
+				.sort({ _id: -1 })
 				.toArray()
 				.then(res => {
 					return res;
 				});
 			return posts;
+		}
+	},
+	Mutation: {
+		createPost: async (_parent, { post }, _context, _info) => {
+			let newPost = await _context.db
+				.collection("posts")
+				.insertOne(post)
+				.then(res => {
+					return res;
+				});
+
+			return newPost.ops[0];
 		}
 	}
 };

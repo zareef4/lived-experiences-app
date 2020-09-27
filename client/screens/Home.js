@@ -15,7 +15,7 @@ import {
 	Fab
 } from "native-base";
 import { Image, StyleSheet } from "react-native";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery, gql, NetworkStatus } from "@apollo/client";
 
 const POSTS = gql`
 	query {
@@ -36,8 +36,12 @@ function HomeScreen({ navigation }) {
 		Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
 	});
 
-	const { loading, error, data } = useQuery(POSTS);
+	const { loading, error, data, refetch, networkStatus } = useQuery(POSTS, {
+		notifyOnNetworkStatusChange: true
+	});
 
+	if (networkStatus === NetworkStatus.refetch)
+		return <Text>Refetching...</Text>;
 	if (loading) return <Text>Loading...</Text>;
 	if (error) return <Text>Error :(</Text>;
 
@@ -213,7 +217,10 @@ function HomeScreen({ navigation }) {
 				</Content>
 				{/* ADD NEW BUTTON a */}
 				<Fab
-					onPress={() => navigation.navigate("AddNewModal")}
+					onPress={() => {
+						navigation.setOptions({ refetch });
+						navigation.navigate("AddNewModal");
+					}}
 					containerStyle={{}}
 					style={{ backgroundColor: "rgba(230,179,0,1)" }}
 					position="bottomLeft"

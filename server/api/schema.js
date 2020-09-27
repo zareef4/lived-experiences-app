@@ -1,11 +1,6 @@
 const { gql } = require("apollo-server");
 
 module.exports = gql`
-	type Book {
-		title: String
-		author: String
-	}
-
 	type Post {
 		title: String
 		author: String
@@ -16,8 +11,20 @@ module.exports = gql`
 		_id: String
 	}
 
+	input PostInput {
+		title: String
+		author: String
+		story: String
+		image: String
+		isGoodExperience: Boolean
+		location: String
+	}
+
 	type Query {
-		books: [Book]
 		posts: [Post]
+	}
+
+	type Mutation {
+		createPost(post: PostInput): Post
 	}
 `;
