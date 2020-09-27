@@ -42,7 +42,7 @@ export default function HeaderBar() {
         </Button>
         {/* MENU */}
         <Button
-          onPress={() => navigation.navigate("Menu")}
+          onPress={() => navigation.openDrawer()}
           transparent
         >
           <Icon name="md-menu" style={styles.reactIcons}/>

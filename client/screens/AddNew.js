@@ -31,7 +31,6 @@ export default function AddNew() {
 
 	return (
 		<Container>
-			<Header />
 			<Content>
 				<Form style={styles.form}>
 					<View style={{ justifyContent: 'flex-end', flexDirection: "row", marginRight: 15 }}>
@@ -79,11 +78,11 @@ export default function AddNew() {
 						<Icon
 							name="pin"
 							style={{ color: "rgb(74,74,74)" }}
-						></Icon>
+						/>
 
 						<Input
 							value={location}
-							placeholder="Add Locaton"
+							placeholder="Add Location"
 							onChangeText={t => setLocation(t)}
 						/>
 					</Item>
