@@ -10,6 +10,7 @@ import variables from "./theme/variables/platform";
 import HomeScreen from "./screens/Home";
 import DetailsScreen from "./screens/Details";
 import AddNew from "./screens/AddNew";
+import Map from "./screens/Map"
 
 const Stack = createStackNavigator();
 
@@ -23,7 +24,7 @@ function App() {
 						headerShown: false
 					}}
 				>
-					<Stack.Screen name="Home" component={HomeScreen} />
+					<Stack.Screen name="Home" component={Map} />
 					<Stack.Screen name="Details" component={DetailsScreen} />
 				</Stack.Navigator>
 			</NavigationContainer>

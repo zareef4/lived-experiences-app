@@ -2,7 +2,6 @@ import React, { Component, useState } from "react";
 import Font, { useFonts } from "expo-font";
 import {
 	Container,
-	Header,
 	Content,
 	Card,
 	CardItem,
@@ -15,6 +14,7 @@ import {
 	Fab
 } from "native-base";
 import { Image, StyleSheet } from "react-native";
+import HeaderBar from "./HeaderBar";
 
 function HomeScreen({ navigation }) {
 	const [loaded] = useFonts({
@@ -27,48 +27,7 @@ function HomeScreen({ navigation }) {
 	}
 	return (
 		<Container>
-			<Header>
-				<Left>
-					<Button
-						onPress={() => navigation.navigate("Home")}
-						transparent
-					>
-						<Image
-							source={require("../assets/logo.png")}
-							style={{ width: 40, height: 40 }}
-						/>
-					</Button>
-				</Left>
-
-				<Right>
-					{/* SEARCH */}
-					<Button transparent>
-						<Icon
-							onPress={() => navigation.navigate("Search")}
-							name="search"
-							style={styles.reactIcons}
-						></Icon>
-					</Button>
-					{/* FILTER */}
-					<Button
-						onPress={() => navigation.navigate("Filter")}
-						transparent
-					>
-						<Icon
-							name="md-options"
-							style={styles.reactIcons}
-						></Icon>
-					</Button>
-					{/* MENU */}
-					<Button
-						onPress={() => navigation.navigate("Menu")}
-						transparent
-					>
-						<Icon name="md-menu" style={styles.reactIcons}></Icon>
-					</Button>
-				</Right>
-			</Header>
-
+			<HeaderBar/>
 			<Container
 				style={{
 					paddingLeft: 8,
