@@ -15,6 +15,8 @@ function PostCard({
 	const [liked, setLiked] = useState(false);
 	const [disliked, setDisliked] = useState(false);
 
+	let imgstr = "../assets/" + image;
+	console.log(imgstr);
 	return (
 		<Card>
 			{/* POST IMAGE */}

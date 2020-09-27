@@ -82,36 +82,22 @@ function HomeScreen({ navigation }) {
 						navigation.navigate("AddNewModal");
 					}}
 					containerStyle={{}}
-					style={{ backgroundColor: "rgba(230,179,0,1)", justifyContent:"center" }}
+					style={{
+						backgroundColor: "rgba(230,179,0,1)",
+						justifyContent: "center"
+					}}
 					position="bottomRight"
 				>
 					<Icon
 						name="add"
 						style={{
 							color: "black",
-							fontSize:40,
+							fontSize: 35,
 							fontWeight: 1000,
-							marginTop:10
+							marginTop: 10
 						}}
 					/>
 				</Fab>
-				{/* <Fab
-					onPress={() => {
-						refetch();
-					}}
-					containerStyle={{}}
-					style={{ backgroundColor: "green" }}
-					position="bottomLeft"
-				>
-					<Icon
-						name="add"
-						style={{
-							color: "black",
-							fontSize: 44,
-							fontWeight: 1000
-						}}
-					/>
-				</Fab> */}
 			</Container>
 		</Container>
 	);

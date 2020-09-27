@@ -1,7 +1,7 @@
 import React from "react";
 import MapView, { Marker } from "react-native-maps";
 import { StyleSheet, View, Dimensions } from "react-native";
-import { Container, Icon, Text } from "native-base";
+import { Container, Icon, Text, Fab } from "native-base";
 import { useQuery, gql, NetworkStatus } from "@apollo/client";
 
 import MarkerModel from "../model/MarkerModel";
@@ -20,6 +20,13 @@ const POSTS = gql`
 	}
 `;
 
+const initialRegion = {
+	latitude: 49.281914,
+	longitude: -123.121234,
+	latitudeDelta: 0.4,
+	longitudeDelta: 0.4
+};
+
 export default function MapScreen({ navigation }) {
 	const { loading, error, data, refetch, networkStatus } = useQuery(POSTS, {
 		notifyOnNetworkStatusChange: true
@@ -34,7 +41,7 @@ export default function MapScreen({ navigation }) {
 		<Container>
 			<HeaderBar />
 			<Container>
-				<MapView style={styles.mapStyle}>
+				<MapView style={styles.mapStyle} initialRegion={initialRegion}>
 					{data.posts &&
 						data.posts.map(post => {
 							let marker = new MarkerModel(
@@ -60,17 +67,27 @@ export default function MapScreen({ navigation }) {
 							);
 						})}
 				</MapView>
-				<Icon
-					style={{
-						position: "absolute",
-						bottom: 50,
-						fontSize: 60,
-						color: "orange"
+				<Fab
+					onPress={() => {
+						navigation.navigate("AddNewModal");
 					}}
-					name="add-circle"
-					type="MaterialIcons"
-					onPress={() => navigation.navigate("AddNew")}
-				/>
+					containerStyle={{}}
+					style={{
+						backgroundColor: "rgba(230,179,0,1)",
+						justifyContent: "center"
+					}}
+					position="bottomRight"
+				>
+					<Icon
+						name="add"
+						style={{
+							color: "black",
+							fontSize: 35,
+							fontWeight: 1000,
+							marginTop: 10
+						}}
+					/>
+				</Fab>
 			</Container>
 		</Container>
 	);
